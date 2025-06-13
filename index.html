@@ -3,181 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Aryan's Portfolio</title>
+  <title>My YouTube Launcher</title>
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #2c3e50, #3498db);
+      background: linear-gradient(to right, #1f1c2c, #928dab);
       color: white;
-      line-height: 1.6;
-    }
-
-    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
       text-align: center;
-      padding: 80px 20px 40px;
+      padding: 20px;
     }
 
-    header h1 {
-      font-size: 3em;
-      animation: fadeIn 2s ease-out;
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
     }
 
-    header p {
+    p {
       font-size: 1.2em;
-      margin-top: 10px;
+      margin-bottom: 40px;
     }
 
-    nav {
-      text-align: center;
-      margin: 30px 0;
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #FF0000;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
     }
 
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #f1c40f;
-      font-weight: bold;
-    }
-
-    section {
-      padding: 50px 20px;
-      max-width: 800px;
-      margin: auto;
-      text-align: center;
-    }
-
-    .button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      background-color: #f39c12;
-      color: #000;
-      border-radius: 25px;
-      text-decoration: none;
-      transition: 0.3s ease;
-    }
-
-    .button:hover {
-      background-color: #e67e22;
-      transform: scale(1.05);
+    button:hover {
+      background-color: #cc0000;
     }
 
     footer {
-      padding: 30px;
-      text-align: center;
-      font-size: 0.9em;
-      background: rgba(255, 255, 255, 0.05);
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.8em;
       color: #ccc;
     }
 
-    /* Fullscreen button */
-    #fullscreenBtn {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      padding: 10px 20px;
-      background: #f39c12;
-      color: black;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-      z-index: 1000;
-      transition: background 0.3s;
-    }
-
-    #fullscreenBtn:hover {
-      background: #e67e22;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @media(max-width: 600px) {
-      header h1 {
-        font-size: 2em;
-      }
-
-      nav a {
-        display: block;
-        margin: 10px 0;
-      }
-
-      #fullscreenBtn {
-        padding: 8px 15px;
-        font-size: 14px;
-      }
+    @media (max-width: 600px) {
+      h1 { font-size: 2em; }
+      p { font-size: 1em; }
+      button { font-size: 16px; padding: 12px 25px; }
     }
   </style>
 </head>
 <body>
 
-<!-- Fullscreen Button -->
-<button id="fullscreenBtn" onclick="openFullscreen()">🖥️ Fullscreen</button>
+  <h1>Welcome to My YouTube Launcher</h1>
+  <p>Click below to open YouTube in fullscreen mode</p>
 
-<!-- Header -->
-<header>
-  <h1>Hi, I'm Aryan 👋</h1>
-  <p>Creative Developer | Web Explorer | Code Lover</p>
-</header>
+  <button onclick="openYouTube()">🎬 Open YouTube</button>
 
-<!-- Navigation -->
-<nav>
-  <a href="#about">About</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact</a>
-</nav>
+  <footer>Made with ❤️ by Aryan</footer>
 
-<!-- About Section -->
-<section id="about">
-  <h2>About Me</h2>
-  <p>I'm Aryan, a self-taught web developer passionate about building creative websites using modern web tech. Always learning, always building.</p>
-</section>
-
-<!-- Projects Section -->
-<section id="projects">
-  <h2>My Projects</h2>
-  <ul style="list-style: none; padding: 0; margin-top: 20px;">
-    <li>🎮 JavaScript Carrom Game</li>
-    <li>📱 Realtime Messaging App</li>
-    <li>🌐 This Portfolio on GitHub Pages</li>
-  </ul>
-  <a class="button" href="https://github.com/aryanka3801" target="_blank">See My GitHub</a>
-</section>
-
-<!-- Contact Section -->
-<section id="contact">
-  <h2>Contact Me</h2>
-  <p>Let's connect! Reach me on GitHub or contribute to my projects.</p>
-  <a class="button" href="https://github.com/aryanka3801" target="_blank">Connect Now</a>
-</section>
-
-<!-- Footer -->
-<footer>
-  <p>© 2025 Aryan | Hosted on GitHub Pages</p>
-</footer>
-
-<!-- Fullscreen Script -->
-<script>
-  function openFullscreen() {
-    const elem = document.documentElement;
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-    } else if (elem.webkitRequestFullscreen) { /* Safari */
-      elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) { /* IE11 */
-      elem.msRequestFullscreen();
+  <script>
+    function openYouTube() {
+      // Opens YouTube in a new full-sized tab or window
+      window.open("https://youtube.com", "_blank");
     }
-  }
-</script>
+  </script>
 
 </body>
 </html>
