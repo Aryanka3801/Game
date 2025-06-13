@@ -1,59 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aryan's Web Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aryan's Web World</title>
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: linear-gradient(to right, #1e3c72, #2a5298);
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #2c3e50, #3498db);
-      color: white;
+      color: #fff;
       text-align: center;
-      padding: 50px 20px;
+      padding: 80px 20px;
     }
-
     h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
+      font-size: 3.5em;
+      animation: fadeIn 2s ease-out;
     }
-
     p {
-      font-size: 1.2em;
-      max-width: 600px;
-      margin: 0 auto 30px;
+      font-size: 1.3em;
+      margin-top: 15px;
+      opacity: 0.9;
     }
-
-    a.button {
+    .button {
       display: inline-block;
+      margin-top: 30px;
       padding: 15px 30px;
-      background: #f1c40f;
-      color: #2c3e50;
+      background-color: #f39c12;
+      color: #1e3c72;
       font-weight: bold;
       text-decoration: none;
-      border-radius: 10px;
-      transition: 0.3s ease;
+      border-radius: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
     }
-
-    a.button:hover {
-      background: #f39c12;
+    .button:hover {
+      background-color: #e67e22;
+      transform: scale(1.05);
     }
-
     footer {
-      margin-top: 40px;
+      margin-top: 60px;
       font-size: 0.9em;
-      opacity: 0.7;
+      opacity: 0.6;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to Aryan's Site</h1>
-  <p>This is a simple, clean, and stylish web page hosted on GitHub Pages.</p>
+  <h1>🚀 Welcome to Aryan's Web World</h1>
+  <p>Explore projects, creativity, and innovation — all in one place.</p>
   <a class="button" href="https://github.com/aryanka3801" target="_blank">Visit My GitHub</a>
 
   <footer>
-    <p>Made with ❤️ by Aryan</p>
+    <p>Hosted with ❤️ on GitHub Pages</p>
   </footer>
 </body>
 </html>
