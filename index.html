@@ -3,55 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>3D Box with Device Rotation</title>
+  <title>3D Cube with Device Rotation</title>
   <style>
     body {
       margin: 0;
-      background: #121212;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .scene {
+      width: 200px;
+      height: 200px;
+      perspective: 600px;
+    }
+
+    .cube {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateX(0deg) rotateY(0deg);
+      transition: transform 0.1s linear;
+    }
+
+    .face {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: rgba(0, 255, 255, 0.7);
+      border: 2px solid #0ff;
+      font-size: 40px;
+      color: #000;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      overflow: hidden;
-      color: white;
-      font-family: sans-serif;
+      font-weight: bold;
     }
 
-    .box {
-      width: 150px;
-      height: 150px;
-      background: linear-gradient(45deg, #00f, #0ff);
-      transform-style: preserve-3d;
-      transform: rotateX(0deg) rotateY(0deg);
-      border-radius: 12px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-      transition: background 0.5s;
-    }
-
-    .label {
-      position: absolute;
-      top: 10px;
-      font-size: 1em;
-    }
+    .front  { transform: rotateY(  0deg) translateZ(100px); background: red; }
+    .back   { transform: rotateY(180deg) translateZ(100px); background: orange; }
+    .right  { transform: rotateY( 90deg) translateZ(100px); background: green; }
+    .left   { transform: rotateY(-90deg) translateZ(100px); background: blue; }
+    .top    { transform: rotateX( 90deg) translateZ(100px); background: cyan; }
+    .bottom { transform: rotateX(-90deg) translateZ(100px); background: yellow; }
   </style>
 </head>
 <body>
 
-<div class="label">Rotate your device!</div>
-<div class="box" id="box"></div>
+<div class="scene">
+  <div class="cube" id="cube">
+    <div class="face front">1</div>
+    <div class="face back">2</div>
+    <div class="face right">3</div>
+    <div class="face left">4</div>
+    <div class="face top">5</div>
+    <div class="face bottom">6</div>
+  </div>
+</div>
 
 <script>
-  window.addEventListener('deviceorientation', function(event) {
-    const alpha = event.alpha || 0; // compass
-    const beta = event.beta || 0;   // front-back
-    const gamma = event.gamma || 0; // left-right
+  window.addEventListener('deviceorientation', function(e) {
+    const beta = e.beta || 0;   // front-back tilt
+    const gamma = e.gamma || 0; // left-right tilt
 
-    // Get the box element
-    const box = document.getElementById('box');
+    const cube = document.getElementById('cube');
 
-    // Apply rotation based on device tilt
-    box.style.transform = `rotateX(${beta}deg) rotateY(${gamma}deg)`;
-  }, true);
+    cube.style.transform = `rotateX(${-beta}deg) rotateY(${gamma}deg)`;
+  });
 </script>
 
 </body>
