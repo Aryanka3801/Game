@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Aryan's Portfolio</title>
   <style>
     * {
@@ -13,26 +13,24 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      line-height: 1.6;
-      background: #0f2027;
-      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      background: linear-gradient(to right, #2c3e50, #3498db);
       color: white;
+      line-height: 1.6;
     }
 
     header {
-      padding: 60px 20px;
       text-align: center;
-      background: rgba(0, 0, 0, 0.3);
+      padding: 80px 20px 40px;
     }
 
     header h1 {
       font-size: 3em;
-      margin-bottom: 10px;
+      animation: fadeIn 2s ease-out;
     }
 
     header p {
       font-size: 1.2em;
-      opacity: 0.9;
+      margin-top: 10px;
     }
 
     nav {
@@ -78,6 +76,31 @@
       color: #ccc;
     }
 
+    /* Fullscreen button */
+    #fullscreenBtn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 10px 20px;
+      background: #f39c12;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1000;
+      transition: background 0.3s;
+    }
+
+    #fullscreenBtn:hover {
+      background: #e67e22;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
     @media(max-width: 600px) {
       header h1 {
         font-size: 2em;
@@ -87,47 +110,74 @@
         display: block;
         margin: 10px 0;
       }
+
+      #fullscreenBtn {
+        padding: 8px 15px;
+        font-size: 14px;
+      }
     }
   </style>
 </head>
 <body>
 
+<!-- Fullscreen Button -->
+<button id="fullscreenBtn" onclick="openFullscreen()">🖥️ Fullscreen</button>
+
+<!-- Header -->
 <header>
   <h1>Hi, I'm Aryan 👋</h1>
-  <p>Aspiring Developer | Creative Thinker | Web Explorer</p>
+  <p>Creative Developer | Web Explorer | Code Lover</p>
 </header>
 
+<!-- Navigation -->
 <nav>
   <a href="#about">About</a>
   <a href="#projects">Projects</a>
   <a href="#contact">Contact</a>
 </nav>
 
+<!-- About Section -->
 <section id="about">
   <h2>About Me</h2>
-  <p>I'm Aryan, a self-taught web developer learning new things every day. I love building creative, useful, and beautiful websites using modern tech.</p>
+  <p>I'm Aryan, a self-taught web developer passionate about building creative websites using modern web tech. Always learning, always building.</p>
 </section>
 
+<!-- Projects Section -->
 <section id="projects">
   <h2>My Projects</h2>
-  <p>Here are some of the cool things I've built or worked on:</p>
   <ul style="list-style: none; padding: 0; margin-top: 20px;">
-    <li>🎮 A JavaScript Carrom Game</li>
-    <li>📱 A simple real-time messaging app</li>
-    <li>🌐 This portfolio website on GitHub Pages</li>
+    <li>🎮 JavaScript Carrom Game</li>
+    <li>📱 Realtime Messaging App</li>
+    <li>🌐 This Portfolio on GitHub Pages</li>
   </ul>
-  <a class="button" href="https://github.com/aryanka3801" target="_blank">See GitHub</a>
+  <a class="button" href="https://github.com/aryanka3801" target="_blank">See My GitHub</a>
 </section>
 
+<!-- Contact Section -->
 <section id="contact">
   <h2>Contact Me</h2>
-  <p>You can reach out to me via GitHub or contribute to my projects!</p>
-  <a class="button" href="https://github.com/aryanka3801" target="_blank">Let's Connect</a>
+  <p>Let's connect! Reach me on GitHub or contribute to my projects.</p>
+  <a class="button" href="https://github.com/aryanka3801" target="_blank">Connect Now</a>
 </section>
 
+<!-- Footer -->
 <footer>
   <p>© 2025 Aryan | Hosted on GitHub Pages</p>
 </footer>
+
+<!-- Fullscreen Script -->
+<script>
+  function openFullscreen() {
+    const elem = document.documentElement;
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+      elem.msRequestFullscreen();
+    }
+  }
+</script>
 
 </body>
 </html>
