@@ -1,65 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Aryan's Web World</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aryan's Portfolio</title>
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
+
     body {
-      background: linear-gradient(to right, #1e3c72, #2a5298);
       font-family: 'Segoe UI', sans-serif;
-      color: #fff;
+      line-height: 1.6;
+      background: #0f2027;
+      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      color: white;
+    }
+
+    header {
+      padding: 60px 20px;
       text-align: center;
-      padding: 80px 20px;
+      background: rgba(0, 0, 0, 0.3);
     }
-    h1 {
-      font-size: 3.5em;
-      animation: fadeIn 2s ease-out;
+
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
     }
-    p {
-      font-size: 1.3em;
-      margin-top: 15px;
+
+    header p {
+      font-size: 1.2em;
       opacity: 0.9;
     }
+
+    nav {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #f1c40f;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 50px 20px;
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+
     .button {
       display: inline-block;
-      margin-top: 30px;
-      padding: 15px 30px;
+      margin-top: 20px;
+      padding: 12px 25px;
       background-color: #f39c12;
-      color: #1e3c72;
-      font-weight: bold;
+      color: #000;
+      border-radius: 25px;
       text-decoration: none;
-      border-radius: 30px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: all 0.3s ease;
+      transition: 0.3s ease;
     }
+
     .button:hover {
       background-color: #e67e22;
       transform: scale(1.05);
     }
+
     footer {
-      margin-top: 60px;
+      padding: 30px;
+      text-align: center;
       font-size: 0.9em;
-      opacity: 0.6;
+      background: rgba(255, 255, 255, 0.05);
+      color: #ccc;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to   { opacity: 1; transform: translateY(0); }
+
+    @media(max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>🚀 Welcome to Aryan's Web World</h1>
-  <p>Explore projects, creativity, and innovation — all in one place.</p>
-  <a class="button" href="https://github.com/aryanka3801" target="_blank">Visit My GitHub</a>
 
-  <footer>
-    <p>Hosted with ❤️ on GitHub Pages</p>
-  </footer>
+<header>
+  <h1>Hi, I'm Aryan 👋</h1>
+  <p>Aspiring Developer | Creative Thinker | Web Explorer</p>
+</header>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>I'm Aryan, a self-taught web developer learning new things every day. I love building creative, useful, and beautiful websites using modern tech.</p>
+</section>
+
+<section id="projects">
+  <h2>My Projects</h2>
+  <p>Here are some of the cool things I've built or worked on:</p>
+  <ul style="list-style: none; padding: 0; margin-top: 20px;">
+    <li>🎮 A JavaScript Carrom Game</li>
+    <li>📱 A simple real-time messaging app</li>
+    <li>🌐 This portfolio website on GitHub Pages</li>
+  </ul>
+  <a class="button" href="https://github.com/aryanka3801" target="_blank">See GitHub</a>
+</section>
+
+<section id="contact">
+  <h2>Contact Me</h2>
+  <p>You can reach out to me via GitHub or contribute to my projects!</p>
+  <a class="button" href="https://github.com/aryanka3801" target="_blank">Let's Connect</a>
+</section>
+
+<footer>
+  <p>© 2025 Aryan | Hosted on GitHub Pages</p>
+</footer>
+
 </body>
 </html>
