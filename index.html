@@ -1,79 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>3D Cube with Device Rotation</title>
+  <title>3D Car with Device Rotation</title>
   <style>
-    body {
-      margin: 0;
-      background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .scene {
-      width: 200px;
-      height: 200px;
-      perspective: 600px;
-    }
-
-    .cube {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transform: rotateX(0deg) rotateY(0deg);
-      transition: transform 0.1s linear;
-    }
-
-    .face {
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      background: rgba(0, 255, 255, 0.7);
-      border: 2px solid #0ff;
-      font-size: 40px;
-      color: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-
-    .front  { transform: rotateY(  0deg) translateZ(100px); background: red; }
-    .back   { transform: rotateY(180deg) translateZ(100px); background: orange; }
-    .right  { transform: rotateY( 90deg) translateZ(100px); background: green; }
-    .left   { transform: rotateY(-90deg) translateZ(100px); background: blue; }
-    .top    { transform: rotateX( 90deg) translateZ(100px); background: cyan; }
-    .bottom { transform: rotateX(-90deg) translateZ(100px); background: yellow; }
+    body { margin: 0; overflow: hidden; background: #000; }
+    canvas { display: block; }
   </style>
 </head>
 <body>
 
-<div class="scene">
-  <div class="cube" id="cube">
-    <div class="face front">1</div>
-    <div class="face back">2</div>
-    <div class="face right">3</div>
-    <div class="face left">4</div>
-    <div class="face top">5</div>
-    <div class="face bottom">6</div>
-  </div>
-</div>
+<!-- Three.js and GLTFLoader -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.1/examples/js/loaders/GLTFLoader.js"></script>
 
 <script>
+let scene, camera, renderer, car;
+
+init();
+animate();
+
+function init() {
+  // Scene setup
+  scene = new THREE.Scene();
+  camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
+  camera.position.z = 4;
+
+  renderer = new THREE.WebGLRenderer({antialias: true});
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  // Light
+  const light = new THREE.HemisphereLight(0xffffff, 0x222222, 1.2);
+  scene.add(light);
+
+  // Load car model
+  const loader = new THREE.GLTFLoader();
+  loader.load(
+    'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/CesiumMilkTruck/glTF/CesiumMilkTruck.gltf',
+    function(gltf) {
+      car = gltf.scene;
+      car.scale.set(0.5, 0.5, 0.5);
+      scene.add(car);
+    },
+    undefined,
+    function(error) {
+      console.error('Error loading car model:', error);
+    }
+  );
+
+  // Device rotation
   window.addEventListener('deviceorientation', function(e) {
-    const beta = e.beta || 0;   // front-back tilt
-    const gamma = e.gamma || 0; // left-right tilt
-
-    const cube = document.getElementById('cube');
-
-    cube.style.transform = `rotateX(${-beta}deg) rotateY(${gamma}deg)`;
+    if (car) {
+      const beta = e.beta || 0;
+      const gamma = e.gamma || 0;
+      car.rotation.x = THREE.MathUtils.degToRad(beta);
+      car.rotation.y = THREE.MathUtils.degToRad(gamma);
+    }
   });
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+}
 </script>
 
 </body>
