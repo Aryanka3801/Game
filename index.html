@@ -3,81 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My YouTube Launcher</title>
+  <title>3D Box with Device Rotation</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #1f1c2c, #928dab);
-      color: white;
+      margin: 0;
+      background: #121212;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
-      text-align: center;
-      padding: 20px;
-    }
-
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 1.2em;
-      margin-bottom: 40px;
-    }
-
-    button {
-      padding: 15px 30px;
-      font-size: 18px;
-      background-color: #FF0000;
+      overflow: hidden;
       color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background 0.3s ease;
+      font-family: sans-serif;
     }
 
-    button:hover {
-      background-color: #cc0000;
+    .box {
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(45deg, #00f, #0ff);
+      transform-style: preserve-3d;
+      transform: rotateX(0deg) rotateY(0deg);
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      transition: background 0.5s;
     }
 
-    footer {
+    .label {
       position: absolute;
-      bottom: 10px;
-      font-size: 0.8em;
-      color: #ccc;
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 2em; }
-      p { font-size: 1em; }
-      button { font-size: 16px; padding: 12px 25px; }
+      top: 10px;
+      font-size: 1em;
     }
   </style>
 </head>
 <body>
 
-  <h1>Welcome to My YouTube Launcher</h1>
-  <p>Click below to open YouTube in fullscreen mode</p>
+<div class="label">Rotate your device!</div>
+<div class="box" id="box"></div>
 
-  <button onclick="openYouTube()">🎬 Open YouTube</button>
+<script>
+  window.addEventListener('deviceorientation', function(event) {
+    const alpha = event.alpha || 0; // compass
+    const beta = event.beta || 0;   // front-back
+    const gamma = event.gamma || 0; // left-right
 
-  <footer>Made with ❤️ by Aryan</footer>
+    // Get the box element
+    const box = document.getElementById('box');
 
-  <script>
-    function openYouTube() {
-      // Opens YouTube in a new full-sized tab or window
-      window.open("https://youtube.com", "_blank");
-    }
-  </script>
+    // Apply rotation based on device tilt
+    box.style.transform = `rotateX(${beta}deg) rotateY(${gamma}deg)`;
+  }, true);
+</script>
 
 </body>
 </html>
