@@ -2,54 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Welcome to My Site</title>
+  <title>3D Car Viewer</title>
   <style>
-    body {
+    html, body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(120deg, #1e3c72, #2a5298);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      height: 100%;
       overflow: hidden;
-      text-align: center;
     }
-
-    h1 {
-      font-size: 3em;
-      margin-bottom: 0.2em;
-    }
-
-    p {
-      font-size: 1.5em;
-      margin: 0.5em 0 1.5em;
-    }
-
-    button {
-      padding: 0.8em 1.5em;
-      font-size: 1em;
+    iframe {
       border: none;
-      border-radius: 30px;
-      background-color: #ffffff;
-      color: #2a5298;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #dddddd;
-      transform: scale(1.05);
+      width: 100%;
+      height: 100%;
     }
   </style>
 </head>
 <body>
 
-  <h1>🚀 Welcome to My Website</h1>
-  <p>This is a cool responsive page. Simple. Clean. Stylish.</p>
-  <button onclick="alert('Thank you for clicking!')">Click Me!</button>
+<iframe 
+  src="https://3dviewer.net/embed.html#model=https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/CesiumMilkTruck/glTF/CesiumMilkTruck.gltf"
+  allowfullscreen>
+</iframe>
 
 </body>
 </html>
